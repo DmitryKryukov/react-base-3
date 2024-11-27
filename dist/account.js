@@ -25,7 +25,7 @@ class Account {
     }
     withdrawFunds(amount) {
         if (amount < 0)
-            throw new Error("Отрицательная сумма cнятия");
+            throw new Error("Отрицательная сумма снятия");
         if (amount > this.accountBalance) {
             console.log("На счету не хватает средств для снятия");
             return;
@@ -36,7 +36,7 @@ class Account {
 }
 class DebitAccount extends Account {
     getStatus() {
-        return `Дебетовый счёт №${this.accountID}\nБаланс: ${this.accountBalance} ₽\n———\n`;
+        return `Дебетовый счёт №${this.accountID}\nБаланс: ${this.getBalance()} ₽\n———\n`;
     }
 }
 exports.DebitAccount = DebitAccount;
@@ -47,11 +47,11 @@ class CreditAccount extends Account {
         this.accountLimit = accountLimit;
     }
     getStatus() {
-        return `Кредитный счёт №${this.accountID}\nЛимит: ${this.accountLimit} ₽\n${this.accountBalance > 0 ? "Баланс:" : "Долг:"} ${Math.abs(this.accountBalance)} ₽\n———\n`;
+        return `Кредитный счёт №${this.accountID}\nЛимит: ${this.accountLimit} ₽\n${this.getBalance() > 0 ? "Баланс:" : "Долг:"} ${Math.abs(this.getBalance())} ₽\n———\n`;
     }
     withdrawFunds(amount) {
         if (amount < 0)
-            throw new Error("Отрицательная сумма cнятия");
+            throw new Error("Отрицательная сумма снятия");
         if (amount > this.accountLimit) {
             console.log("Лимит на снятие исчерпан");
             return;
