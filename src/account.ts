@@ -65,7 +65,7 @@ class CreditAccount extends Account {
     }
 
     getStatus(): string {
-        return `Кредитный счёт №${this.accountID}\nЛимит: ${this.accountLimit} ₽\n${this.getBalance()> 0 ? "Баланс:" : "Долг:"} ${Math.abs(this.getBalance())} ₽\n———\n`;
+        return `Кредитный счёт №${this.accountID}\nЛимит: ${this.accountLimit} ₽\n${this.getBalance() > 0 ? "Баланс:" : "Долг:"} ${Math.abs(this.getBalance())} ₽\n———\n`;
     }
 
     withdrawFunds(amount: number): void {
